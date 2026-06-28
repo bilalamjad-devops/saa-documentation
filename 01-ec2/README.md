@@ -32,3 +32,26 @@ Farz karein aap ne Lahore jana hai aik bohot baray software exhibition ke liye, 
 4. **Regional Reserved Instance (Discount Voucher for the whole Hotel Chain):** Hotel ka maalik aap ko aik discount coupon de deta hai ke *"Aap hamari Lahore branch mein kisi bhi floor par room lein, aap ko 40% discount milega. Lekin hum pehle se koi specific room reserve nahi karenge, jo khali mila wahan discount chal jayega."* (Discount hai, par room ki guarantee nahi).
 
 ---
+
+
+yani 
+
+on-demand standard: guarntee ni ha, night ko mily na mily
+
+on-dmeand capcity: guarntee becase we book in acvance
+
+but in this case, we will book daily ?
+
+zonal: 1 year conttract, but you only want to spent 5 hours, but you will get bill of 24 hours
+regionl: you can get room in any branch but no guarntee
+
+
+Ab aap ke is sawaal ka jawab daitay hain jo asal game-changer hai: "But in this case, we will book daily?"
+
+Jawab hai: Nahi, hum rozana manually baith kar booking nahi karenge. DevOps engineer ka kaam hi automation hai!
+
+AWS humein aik feature deta hai jise kehte hain Scheduled Capacity Reservations. Hum aik hi baar rule set kar dete hain (bilkul cron-job ki tarah) ke:
+
+"Har raat 10:00 PM par automatically yeh capacity reserve ho jaye, aur subah 3:00 AM par automatically cancel ho jaye."
+
+AWS background mein khud hi rozana raat 10 baje hamare liye specific Availability Zone mein servers lock kar deta hai aur 3 baje release kar deta hai. Hamein sirf un 5 ghanton ka bill parta hai aur capacity ki guarantee bhi mil jaati hai!
