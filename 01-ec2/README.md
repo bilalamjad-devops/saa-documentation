@@ -7,3 +7,10 @@ A multinational corporate and investment bank regularly processes steady workloa
 
 As the Senior Solutions Architect, how can you implement a cost-effective architecture in AWS for their financial system?
 
+
+- Use On-Demand EC2 instances which allows you to pay for the instances that you launch and use by the second. Reserve compute capacity in a specific Availability Zone to avoid any interruption.
+- Use Regional Reserved Instances to reserve capacity on a specific Availability Zone and lower the operating cost through its billing discounts.
+- Use Dedicated Hosts, which provide a physical host that is fully dedicated to running your instances, and bring your existing per-socket, per-core, or per-VM software licenses to reduce costs.
+- Use On-Demand Capacity Reservations, which provide compute capacity that is always available on the specified recurring schedule.
+
+  
