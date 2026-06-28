@@ -13,4 +13,10 @@ As the Senior Solutions Architect, how can you implement a cost-effective archit
 - Use Dedicated Hosts, which provide a physical host that is fully dedicated to running your instances, and bring your existing per-socket, per-core, or per-VM software licenses to reduce costs.
 - Use On-Demand Capacity Reservations, which provide compute capacity that is always available on the specified recurring schedule.
 
-  
+
+When a critical workload runs for short daily windows but requires **guaranteed capacity** in a specific Availability Zone (AZ) without interruptions:
+
+*   ❌ **On-Demand (Standard):** Risk of capacity unavailability during peak hours. No capacity reservation.
+*   ❌ **Regional RIs:** Provides billing discounts across the region, but **does NOT guarantee capacity** in a specific AZ.
+*   ❌ **Dedicated Hosts:** Too expensive and highly underutilized for a 5-hour workload.
+*   ✅ **On-Demand Capacity Reservations:** Guarantees capacity in a specific AZ with **no term commitment** (1/3 years). Can be programmatically created before 10 PM and canceled after 3 AM to minimize costs.
