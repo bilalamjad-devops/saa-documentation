@@ -48,6 +48,8 @@ AWS cannot see inside the Operating System due to security boundaries. The follo
 ---
 
 ## 🎯 Scenario: Secure IPv6 Outbound Traffic with Deep Inspection
+
+
 When designing network filtering for enterprise payment architectures using IPv6 under strict security guidelines:
 
 ### 🛡️ Core Rules of Thumb for SAA-C03:
@@ -57,6 +59,9 @@ When designing network filtering for enterprise payment architectures using IPv6
 4.  **Deep Packet Inspection/Filtering:** Security requirements that ask for deep flow inspection and protocol filtering require **AWS Network Firewall**.
 
 📌 **Exam Trap:** Do not confuse *Regional Internet Gateways* with *Egress-Only IGWs*. Standard IGWs allow bi-directional traffic (both inbound and outbound), which violates the isolation rule for private subnets.
+
+<img width="426" height="351" alt="Egress+Only+Internet+Gateway-11June2025" src="https://github.com/user-attachments/assets/fa418596-857c-401f-b980-1b44d20eaf12" />
+
 
 
 ---
