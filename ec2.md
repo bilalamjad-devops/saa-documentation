@@ -2,6 +2,18 @@
 
 
 
+## 🎯 Scenario: Script/Automation Fails After Launching a Certain Number of Instances
+When automated scripts (Python/Boto3, Terraform) stop provisioning instances halfway and throw errors, it is usually due to AWS Service Quotas.
+
+*   ❌ **The Misconception:** AWS has a flat limit of 20 total instances.
+*   ✅ **The Reality:** AWS enforces a **vCPU-based On-Demand Instance limit per Region** (Standard vCPU quota). Once your running instances exhaust the allowed total number of vCPUs for that region, subsequent API requests fail.
+*   🛠️ **How to Resolve:** Navigate to the **AWS Service Quotas** dashboard, select the specific instance type group (e.g., Running On-Demand Standard instances), and submit a **Limit Increase Request**. Once AWS approves it, rerun the script.
+*   📌 **Exam Tip:** Service quotas and limits are bound **Per Region**, not per Availability Zone (AZ). Changing the AZ within the same region will NOT fix a vCPU limit error.
+
+
+---
+
+
 ## 🎯 Scenario: Monitoring EC2 Performance Metrics via Amazon CloudWatch
 Understanding the boundaries between AWS Default Metrics and Custom Metrics is crucial for both operational setups and the SAA-C03 exam.
 
