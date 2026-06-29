@@ -2,6 +2,19 @@
 
 
 
+# AWS EC2 Capacity & Cost Optimization Notes
+
+## 🎯 Scenario: Short-Duration Critical Nightly Workloads (e.g., 10 PM - 3 AM)
+When a critical workload runs for short daily windows but requires **guaranteed capacity** in a specific Availability Zone (AZ) without interruptions:
+
+*   ❌ **On-Demand (Standard):** Risk of capacity unavailability during peak hours. No capacity reservation.
+*   ❌ **Regional RIs:** Provides billing discounts across the region, but **does NOT guarantee capacity** in a specific AZ.
+*   ❌ **Dedicated Hosts:** Too expensive and highly underutilized for a 5-hour workload.
+*   ✅ **On-Demand Capacity Reservations:** Guarantees capacity in a specific AZ with **no term commitment** (1/3 years). Can be programmatically created before 10 PM and canceled after 3 AM to minimize costs.
+
+
+---
+
 ## 🎯 Scenario: Script/Automation Fails After Launching a Certain Number of Instances
 When automated scripts (Python/Boto3, Terraform) stop provisioning instances halfway and throw errors, it is usually due to AWS Service Quotas.
 
