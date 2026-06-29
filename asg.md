@@ -11,4 +11,9 @@ When an application experiences sudden morning spikes (burst traffic) but new EC
 
 📌 **Exam Rule of Thumb:** If the question highlights **"Application boot-up delays / initialization lag"** causing timeouts during scaling, the correct solution must involve configuring the **Instance Warm-Up condition** or **ASG Cooldowns**.
 
+<img width="862" height="909" alt="autoscaling-instance-warmup-time" src="https://github.com/user-attachments/assets/5e08f9d7-ef5c-47fc-b20b-a6bf88e9b03d" />
+
+---
+
+
 29-June-2026.
