@@ -44,3 +44,21 @@ AWS cannot see inside the Operating System due to security boundaries. The follo
 *   Application Logs
 
 📌 **Exam Tip:** Whenever a scenario mentions monitoring **Memory/RAM** or **internal disk space percentages**, the correct architectural answer must involve installing the **CloudWatch Agent**.
+
+---
+
+## 🎯 Scenario: Secure IPv6 Outbound Traffic with Deep Inspection
+When designing network filtering for enterprise payment architectures using IPv6 under strict security guidelines:
+
+### 🛡️ Core Rules of Thumb for SAA-C03:
+1.  **IPv4 Private Internet:** Always uses **NAT Gateway**.
+2.  **IPv6 Private Internet:** Always uses **Egress-Only Internet Gateway** ⚠️ *(NAT Gateways do NOT support IPv6)*.
+3.  **Stateful Behavior:** Egress-Only IGW allows outbound requests but drops uninitiated inbound connections from the internet.
+4.  **Deep Packet Inspection/Filtering:** Security requirements that ask for deep flow inspection and protocol filtering require **AWS Network Firewall**.
+
+📌 **Exam Trap:** Do not confuse *Regional Internet Gateways* with *Egress-Only IGWs*. Standard IGWs allow bi-directional traffic (both inbound and outbound), which violates the isolation rule for private subnets.
+
+
+---
+
+
