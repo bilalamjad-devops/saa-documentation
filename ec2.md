@@ -67,3 +67,23 @@ When designing network filtering for enterprise payment architectures using IPv6
 ---
 
 
+## 🎯 Scenario: Allowing EC2 Instances Secure Access to AWS Services (S3, DynamoDB, etc.)
+Security engineering mandates that compute resources must never manage static long-term access credentials locally.
+
+### 🚫 Anti-Patterns (What NOT to do)
+* Hardcoding `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` inside configuration files, `.env` profiles, or scripts on the instance.
+* Storing API credentials on a Bastion host or trying to configure authentication inside Network Security Groups.
+
+### 🛡️ The Secure Solution: IAM Roles (Instance Profiles)
+* **How it works:** Create an IAM Role with the specific required policies (Least Privilege) and attach it to the EC2 instance as an **Instance Profile**.
+* **Under the Hood:** The EC2 instance securely leverages AWS **IMDS** to automatically fetch short-lived, temporary session tokens. AWS completely handles token rotation in the background.
+* **Security Value:** If the instance is ever compromised, there are no persistent static keys for attackers to exfiltrate.
+
+📌 **Exam Rule of Thumb:** Whenever an EC2 instance needs to communicate with *any* other AWS service (S3, RDS, SQS, etc.), the absolute correct, most cost-effective, and secure answer is always **Create an IAM Role and assign it to the EC2 instance**.
+
+<img width="700" height="305" alt="AWS-IAMRole-Trust" src="https://github.com/user-attachments/assets/142d1556-25ae-4374-a891-af516b0a6778" />
+
+
+---
+
+
