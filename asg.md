@@ -60,5 +60,11 @@ The **Cooldown Period** is a configurable countdown timer that acts as a tempora
 📌 **Exam Rule of Thumb:** Cooldown periods apply to *Simple Scaling* policies to inject a pause buffer. The default value is always **300 seconds**, and its entire purpose is to prevent premature subsequent scaling actions.
 
 
+<img width="931" height="827" alt="scheduled-scaling-action-ec2" src="https://github.com/user-attachments/assets/57a31471-eee5-4d48-ac28-99bfce947353" />
+
+---
+
+
+
 
 29-June-2026.
