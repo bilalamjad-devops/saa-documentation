@@ -26,6 +26,21 @@ When a new software version or OS patch requires deploying a new Amazon Machine 
 
 📌 **DevOps Tip:** In real CI/CD pipelines, whenever a deployment triggers, tools like Terraform or GitHub Actions automatically create a new Launch Template version with the latest built AMI and trigger an **ASG Instance Refresh** to roll out the new servers smoothly without downtime.
 
+---
+
+## 🎯 Scenario: Maintaining Consistent 8-Instance Fleet via Multi-AZ ASG and ELB
+When designing highly available, consistent architectures for fixed workloads, boundary definitions of Load Balancers are paramount.
+
+### 🛑 ELB Architecture Boundary (Hard Rule)
+* **Regional Scope:** An Elastic Load Balancer (ELB/ALB) operates strictly within a **single AWS Region**. It cannot cross region boundaries to balance traffic across EC2 instances sitting in two different regions. 
+* Multi-Region cross-balancing requires DNS routing layer tools like **Route 53 (Latency/Failover routing)** or **AWS Global Accelerator**.
+
+### 🛡️ The Resilient Strategy: Split Fleet Multi-AZ
+* **Even Distribution:** Divide the baseline requirement (e.g., 8 instances) evenly across at least two Availability Zones (4 in AZ-A, 4 in AZ-B) within the same region.
+* **Failover Mitigation:** If an outage strikes AZ-A, the remaining 4 instances in AZ-B temporarily absorb the traffic spike. 
+* **Leveraging Burstable T3:** T3 instances utilize CPU credit balances to burst performance during the short minutes it takes for the ASG to launch the 4 replacement instances in the healthy zone.
+
+📌 **Exam Strategy:** If a question asks to load-balance across multiple *regions* using a single ELB, eliminate that option immediately. ELB is bounded by a single Region but scales natively across multiple *Availability Zones*.
 
 
 29-June-2026.
