@@ -16,4 +16,16 @@ When an application experiences sudden morning spikes (burst traffic) but new EC
 ---
 
 
+## 🎯 Scenario: Updating AMIs or Instance Types in an Active Auto Scaling Group (ASG)
+When a new software version or OS patch requires deploying a new Amazon Machine Image (AMI) across an ASG fleet.
+
+### ⚙️ Architecture Rules for SAA-C03:
+1.  **Launch Templates are Immutable:** You cannot directly edit or modify an existing launch template configuration configuration row.
+2.  **The Upgrade Path:** To change an AMI, you must **Create a new Launch Template version** (or a brand new template) containing the updated AMI ID, and then update the ASG settings to point to this new blueprint.
+3.  **Target Groups are Unaffected:** Modifying internal instance properties (like AMIs, storage, or instance size) does not require changing Load Balancer Target Groups. Target groups handle routing, not resource blueprints.
+
+📌 **DevOps Tip:** In real CI/CD pipelines, whenever a deployment triggers, tools like Terraform or GitHub Actions automatically create a new Launch Template version with the latest built AMI and trigger an **ASG Instance Refresh** to roll out the new servers smoothly without downtime.
+
+
+
 29-June-2026.
