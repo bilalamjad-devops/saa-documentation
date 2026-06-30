@@ -64,6 +64,16 @@ The **Cooldown Period** is a configurable countdown timer that acts as a tempora
 
 ---
 
+## 🎯 Scenario: Understanding Default ASG Scale-In Termination Logic
+When a scale-in event triggers due to low traffic, Amazon EC2 Auto Scaling follows a strict, deterministic sequence under its default policy to select which instance to terminate first.
+
+### ⚙️ Default Termination Flowchart Logic:
+1.  **Balance Availability Zones:** ASG identifies which AZ has the highest number of instances. It targets that AZ first to maintain an even network distribution across infrastructure zones.
+2.  **Oldest Launch Template Blueprint (The Trigger Point):** Within the targeted AZ, it looks for instances launched from the **oldest Launch Template or Launch Configuration version**. This ensures legacy application code or unpatched OS instances are cleaned up first.
+3.  **Billing Hour Optimization:** If a tie occurs, it selects the unprotected instance closest to its next billing hour to maximize EC2 resource utilization and cost-efficiency.
+4.  **Random Selection:** If all the above parameters match identically, ASG randomly picks an instance from the filtered pool.
+
+📌 **Exam Rule of Thumb:** If the question asks which instance dies first during standard scale-in, eliminate random choices. ASG prioritizes AZ balance first, followed strictly by instances utilizing the **oldest launch template**.
 
 
 
